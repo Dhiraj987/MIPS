@@ -13,7 +13,6 @@
 	
 loop:	lw $t1, 0($s0)	#gets the first value stored in $s0 and stores it into $t1
 	
-	addi $t1,$t0,24		#test value for x is 12
 	addi $t2,$t1,-2		#x-2 in $t2
 	addi $t3,$t1,5		#x+5 in $t3
 	mul $t4,$t2,$t3		#store ()*() into $t4
@@ -22,7 +21,13 @@ loop:	lw $t1, 0($s0)	#gets the first value stored in $s0 and stores it into $t1
 	move $a0,$t4		#get the result into a0
 	syscall
 	
+	li $v0,11
+	li $a0,10
+	syscall
 	
+	addi $s0,$s0,4		#point to the next number
+	addi  $s1,$s1,1		#incrementing the $s1	
+	bne $s1,$s2, loop	#loop when s1!=s2
 	
 	li $v0,10		#terminate the code
 	syscall	
