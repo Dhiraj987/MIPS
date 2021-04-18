@@ -45,7 +45,7 @@ calc: #here is my procedure
 	addi $t2,$t1,-2		#x-2 in $t2
 	addi $t3,$t1,5		#x+5 in $t3
 	mul $t3,$t2,$t3		#store ()*() into $t3
-	move $v0, $t3		#move the $t3 into $v0
+	move $v0, $t3		#move the vaklue of $t3 into $v0
 
 	jr $ra	#return flight, it stores the return address
 	
