@@ -30,6 +30,24 @@ j	LOOP	# Do another iteration
 
 step1:	
 	addi $s0,$zero,268500992	#resetting the address of the $s0 so that the step2 can start from the initial position
+	
+step2: 	lw $t1,0($s0)		#loading the $s0 stored number (as pointed by the placemenr- 0) into $t1 
+	
+	move $a0,$t1		#moving the loaded number/argument into $a0 so that the callee can access them
+	
+	jal modifier		#where the callee is called
+	
+	sw $v1,0($s3)		#moving the modified results into $s3 or the empty space bb
+	addi $s0,$s0,4		#increasing the pointer of $s0 or aa
+	addi $s3,$s3,4		#increasing the pointer of $s3 or bb
+	
+	addi $s1,$s1,1		#upgrading the interations count
+	bne $s1,$s2, step2	#conditional check when the loop breaks
+	
+	
+	li $v0,10		#terminates when everything is completed
+	syscall
+
 .data
 aa:	.space 48
 bb:	.space 48
