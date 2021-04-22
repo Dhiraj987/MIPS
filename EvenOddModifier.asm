@@ -47,6 +47,30 @@ step2: 	lw $t1,0($s0)		#loading the $s0 stored number (as pointed by the placeme
 	
 	li $v0,10		#terminates when everything is completed
 	syscall
+	
+	#callee
+	modifier: 
+	add $s4,$0,$a0		#move the arguments into $s4
+	addi $s5,$0,2		#store 2 into $s5
+	
+	div $s4,$s5	#num mod 2
+	mfhi $s5	#move the remainder into $s5
+		
+	beq $s5,0, even		#jump to even if the remainder is 0
+	
+	#do this is its not even
+	addi $s4,$s4,-48	#subtract 48 from the value 
+	
+	move $v1, $s4		#move the value/output into $v1
+	jr $ra		#jump to the caller
+				
+			
+	#if its even, do this
+	even:		
+	addi $s4,$s4,27		#add 27 to the value
+			
+	move $v1,$s4		#move the calculated value into $v1
+	jr $ra		#jump to the caller
 
 .data
 aa:	.space 48
