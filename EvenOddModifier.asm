@@ -4,6 +4,11 @@
 la $s0,aa	#loading the first empty space that we need for random integers
 la $s3,bb	#loading the second empty space we need to store the modified results
 
+li $s6, 0	#initial number for the iteration for the creation of random integers
+li $s7, 13	#number of iterations while crearting the loop-- it terminates before loading the value so no. of ints that we need+1
+
+
+
 LOOP:
 li	$a0, 1		#random generator id
 li	$a1, 710	# upper bound of the range: (max-min)
