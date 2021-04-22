@@ -7,7 +7,8 @@ la $s3,bb	#loading the second empty space we need to store the modified results
 li $s6, 0	#initial number for the iteration for the creation of random integers
 li $s7, 13	#number of iterations while crearting the loop-- it terminates before loading the value so no. of ints that we need+1
 
-
+li $s1,0	#iterations to calculate the modified numbers
+li $s2,12	#total numbers of iterations to modifying the random array
 
 LOOP:
 li	$a0, 1		#random generator id
