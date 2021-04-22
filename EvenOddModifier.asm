@@ -28,8 +28,8 @@ addi $s0,$s0,4		#increasing the placements of the array
 
 j	LOOP	# Do another iteration 
 
-step1:
-
+step1:	
+	addi $s0,$zero,268500992	#resetting the address of the $s0 so that the step2 can start from the initial position
 .data
 aa:	.space 48
 bb:	.space 48
