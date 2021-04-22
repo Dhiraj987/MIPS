@@ -1,6 +1,5 @@
 .text
 
-
 la $s0,aa	#loading the first empty space that we need for random integers
 la $s3,bb	#loading the second empty space we need to store the modified results
 
@@ -14,7 +13,7 @@ LOOP:
 li	$a0, 1		#random generator id
 li	$a1, 710	# upper bound of the range: (max-min)
 li	$v0, 42		# random int range
-syscall
+syscall			#creates the random integer
 
 addi	$s6, $s6, 1	# increment the number of iterations
 beq	$s6, $s7, step1	# branch to step1 if iterations is 12
@@ -73,5 +72,5 @@ step2: 	lw $t1,0($s0)		#loading the $s0 stored number (as pointed by the placeme
 	jr $ra		#jump to the caller
 
 .data
-aa:	.space 48
-bb:	.space 48
+aa:	.space 48	#space for the randomly generated array
+bb:	.space 48	#space for the modified values of the array
